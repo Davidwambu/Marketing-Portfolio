@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Wambua — Media Buyer & Creative Portfolio</title>
+<meta name="description" content="Static ad creative and resume — David Wambua, media buyer for Training House and Revvies Energy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0D1015;
+    --bg-raised: #151A21;
+    --ink: #ECEFEA;
+    --ink-dim: #9AA2AC;
+    --ink-faint: #5E6773;
+    --ice: #4FD8E8;
+    --charge: #FF6A3D;
+    --lime: #C6FF5E;
+    --line: #262E38;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+  ::selection { background: var(--ice); color: #06181C; }
+
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+  }
+
+  /* ---------- background atmosphere ---------- */
+
+  .glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+  }
+  .glow.a { width: 420px; height: 420px; background: var(--ice); top: -140px; right: -140px; }
+  .glow.b { width: 380px; height: 380px; background: var(--charge); top: 900px; left: -160px; opacity: 0.22; }
+  .glow.c { width: 340px; height: 340px; background: var(--lime); top: 2400px; right: -120px; opacity: 0.16; }
+
+  /* ---------- sticky mini nav ---------- */
+
+  .minav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+    pointer-events: none;
+  }
+  .minav-pill {
+    pointer-events: auto;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    background: rgba(21, 26, 33, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: var(--ink-dim);
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .minav-pill.show { opacity: 1; transform: translateY(0); }
+  .minav-pill a { text-decoration: none; color: var(--ink-dim); transition: color .15s ease; }
+  .minav-pill a:hover { color: var(--ice); }
+  .minav-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+
+  /* ---------- Header / Hero ---------- */
+
+  header.hero {
+    position: relative;
+    z-index: 1;
+    padding: 84px 0 40px;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    color: var(--lime);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .kicker::before {
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--lime);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  h1.name {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(42px, 7.4vw, 66px);
+    line-height: 0.96;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+  }
+  h1.name .hl {
+    background: linear-gradient(100deg, var(--ice), var(--lime) 60%, var(--charge));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .role {
+    font-size: 18px;
+    color: var(--ink-dim);
+    max-width: 42ch;
+    margin: 0 0 28px;
+  }
+  .role strong { color: var(--ink); font-weight: 600; }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 30px;
+  }
+  .tags span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-dim);
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .tags span:hover { border-color: var(--ice); color: var(--ice); }
+
+  .contact {
+    font-size: 14px;
+    color: var(--ink-faint);
+  }
+  .contact a { text-decoration: none; color: var(--ink-dim); }
+  .contact a:hover { color: var(--ice); }
+  .contact span.sep { margin: 0 10px; color: var(--line); }
+
+  /* ---------- photo card ---------- */
+
+  .photo-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .photo-shape {
+    position: absolute;
+    inset: 14px -14px -14px 14px;
+    background: linear-gradient(155deg, var(--ice), var(--charge));
+    border-radius: 22px;
+    transform: rotate(3deg);
+    z-index: 0;
+  }
+  .photo-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 320px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--bg-raised);
+    transform: rotate(-2deg);
+    transition: transform .35s ease;
+  }
+  .photo-card:hover { transform: rotate(0deg) scale(1.02); }
+  .photo-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(45%) contrast(1.05);
+    transition: filter .35s ease;
+  }
+  .photo-card:hover img { filter: grayscale(0%) contrast(1.05); }
+
+  .photo-badge {
+    position: absolute;
+    bottom: -14px;
+    left: -14px;
+    z-index: 2;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--lime);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .photo-badge .pulse {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--lime);
+    box-shadow: 0 0 0 0 rgba(198,255,94,0.6);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(198,255,94,0.55); }
+    70% { box-shadow: 0 0 0 9px rgba(198,255,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(198,255,94,0); }
+  }
+
+  @media (max-width: 680px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .photo-stage { order: -1; margin-bottom: 20px; }
+    .photo-card { max-width: 220px; }
+  }
+
+  /* ---------- reveal animation ---------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- intro strip ---------- */
+
+  .intro {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 30px 0;
+    font-size: 16px;
+    color: var(--ink-dim);
+    max-width: 62ch;
+    margin-top: 30px;
+  }
+  .intro a.drive-link {
+    color: var(--ice);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(79, 216, 232, 0.4);
+  }
+  .intro a.drive-link:hover { border-color: var(--ice); }
+
+  /* ---------- Client sections ---------- */
+
+  section.client {
+    position: relative; z-index: 1;
+    padding: 84px 0;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  section.client:last-of-type { border-bottom: none; }
+
+  .ghost-num {
+    position: absolute;
+    top: -10px;
+    right: -6px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 160px;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--line);
+    z-index: -1;
+    user-select: none;
+  }
+
+  .client-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    color: var(--tag-color, var(--ice));
+    margin-bottom: 14px;
+  }
+
+  h2.client-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(32px, 5.6vw, 48px);
+    line-height: 1.02;
+    margin: 0 0 8px;
+    letter-spacing: -0.005em;
+  }
+
+  .client-sub {
+    color: var(--ink-dim);
+    font-size: 15.5px;
+    margin: 0 0 26px;
+    max-width: 52ch;
+  }
+
+  ul.notes {
+    list-style: none;
+    margin: 0 0 30px;
+    padding: 0;
+    max-width: 54ch;
+  }
+  ul.notes li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: var(--ink);
+    font-size: 15.5px;
+  }
+  ul.notes li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 10px;
+    width: 6px; height: 6px;
+    background: var(--tag-color, var(--ice));
+  }
+
+  .view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    background: transparent;
+    border: 1px solid var(--tag-color, var(--ice));
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    border-radius: 999px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .view-link:hover { background: var(--tag-color, var(--ice)); color: #06181C; }
+  .view-link .arrow { transition: transform 0.15s ease; }
+  .view-link:hover .arrow { transform: translateX(3px); }
+
+  section.revvies { --tag-color: var(--charge); }
+
+  /* ---------- Resume ---------- */
+
+  section.resume { position: relative; z-index: 1; padding: 88px 0 40px; }
+
+  .resume-heading {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    color: var(--ice);
+    margin-bottom: 14px;
+  }
+
+  h2.resume-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(32px, 5.6vw, 48px);
+    line-height: 1.02;
+    margin: 0 0 30px;
+    letter-spacing: -0.005em;
+  }
+
+  .summary { color: var(--ink-dim); font-size: 16px; max-width: 62ch; margin-bottom: 44px; }
+  .summary strong { color: var(--ink); font-weight: 600; }
+
+  h3.block-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+    display: flex; align-items: center; gap: 10px;
+  }
+  h3.block-title::before { content: ""; width: 16px; height: 1px; background: var(--lime); }
+  section.resume > h3.block-title:first-of-type { border-top: none; padding-top: 0; }
+
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+  .skill-chip {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    max-width: 260px;
+    background: var(--bg-raised);
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .skill-chip:hover { border-color: var(--ice); transform: translateY(-2px); }
+  .skill-chip .k { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--ice); display:block; margin-bottom: 6px; letter-spacing: .03em; }
+  .skill-chip .v { font-size: 14px; color: var(--ink-dim); }
+
+  .job { margin-bottom: 44px; }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 4px 16px; margin-bottom: 4px;
+  }
+  .job-role { font-size: 18px; font-weight: 600; color: var(--ink); }
+  .job-dates {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px; color: var(--ink-faint); white-space: nowrap;
+  }
+  .job-company { font-size: 14.5px; color: var(--charge); margin-bottom: 14px; font-weight: 500; }
+
+  ul.job-notes { list-style: none; margin: 0; padding: 0; max-width: 60ch; }
+  ul.job-notes li { position: relative; padding-left: 20px; margin-bottom: 9px; font-size: 15px; color: var(--ink-dim); }
+  ul.job-notes li::before { content: "–"; position: absolute; left: 0; color: var(--ink-faint); }
+  ul.job-notes li strong { color: var(--ink); font-weight: 600; }
+
+  .edu-item { font-size: 15px; color: var(--ink-dim); margin-bottom: 10px; max-width: 62ch; }
+  .edu-item strong { color: var(--ink); font-weight: 600; }
+
+  .certs { font-size: 14px; color: var(--ink-faint); line-height: 1.9; max-width: 64ch; }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    position: relative; z-index: 1;
+    padding: 60px 0 90px;
+    color: var(--ink-faint);
+    font-size: 13.5px;
+    font-family: 'IBM Plex Mono', monospace;
+    border-top: 1px solid var(--line);
+    margin-top: 20px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  footer a { text-decoration: none; color: var(--ink-dim); }
+  footer a:hover { color: var(--ice); }
+
+  @media (max-width: 560px) {
+    header.hero { padding: 100px 0 30px; }
+    section.client, section.resume { padding-top: 60px; padding-bottom: 60px; }
+    .ghost-num { font-size: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="glow a"></div>
+<div class="glow b"></div>
+<div class="glow c"></div>
+
+<div class="minav" id="minav">
+  <div class="minav-pill" id="minavPill">
+    <span class="dot"></span>
+    <span>David Wambua</span>
+    <a href="#work">Work</a>
+    <a href="#resume">Resume</a>
+    <a href="https://drive.google.com/drive/folders/10fiYRYOGhfX7JW-sgjj8zmCBLsrocIUt?usp=sharing" target="_blank" rel="noopener">Drive ↗</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">CREATIVE PORTFOLIO &amp; RESUME</div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="name">David<br><span class="hl">Wambua</span></h1>
+        <p class="role">Media buyer &amp; creative producer building <strong>static ad creative</strong> that's made to be tested — fast, on-brand, and built for the platform it's running on.</p>
+
+        <div class="tags">
+          <span>Meta Ads</span>
+          <span>Google Ads</span>
+          <span>Shopify</span>
+          <span>Email Marketing</span>
+          <span>Creative Production</span>
+        </div>
+
+        <div class="contact">
+          Nairobi, Kenya <span class="sep">/</span>
+          <a href="mailto:davidwambu8@gmail.com">davidwambu8@gmail.com</a> <span class="sep">/</span>
+          <a href="tel:+254719558550">+254 719 558 550</a> <span class="sep">/</span>
+          <a href="https://www.linkedin.com/in/david-wambua-mediabuyer" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="photo-stage">
+        <div class="photo-shape"></div>
+        <div class="photo-card">
+          <img src="assets/photo.jpg" alt="David Wambua" width="900" height="1157" loading="eager">
+        </div>
+        <div class="photo-badge"><span class="pulse"></span>Open to work</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="intro reveal">
+    A selection of static ad creatives built for current client accounts — copy direction, design, and Meta safe-zone sizing for multi-placement delivery. Full set:
+    <a class="drive-link" href="https://drive.google.com/drive/folders/10fiYRYOGhfX7JW-sgjj8zmCBLsrocIUt?usp=sharing" target="_blank" rel="noopener">Static Creatives — Google Drive</a>.
+  </div>
+
+  <div id="work"></div>
+
+  <section class="client training-house reveal">
+    <div class="ghost-num">01</div>
+    <div class="client-tag">CLIENT 01 — ENDURANCE NUTRITION</div>
+    <h2 class="client-name">Training House</h2>
+    <p class="client-sub">Multi-brand endurance nutrition retailer, active across AU, NZ, and UK markets.</p>
+    <ul class="notes">
+      <li>Static ad creative for Meta campaigns, built with Canva safe-zone templates for multi-placement sizing</li>
+      <li>Copy angles developed from the 2026 Meta Ads Growth Playbook, with ambassador and competitor-referenced concepts</li>
+    </ul>
+    <a class="view-link" href="https://drive.google.com/drive/folders/10fiYRYOGhfX7JW-sgjj8zmCBLsrocIUt?usp=sharing" target="_blank" rel="noopener">
+      View creatives <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <section class="client revvies reveal">
+    <div class="ghost-num">02</div>
+    <div class="client-tag">CLIENT 02 — SPORTS NUTRITION</div>
+    <h2 class="client-name">Revvies Energy</h2>
+    <p class="client-sub">Australian sports nutrition brand — creative for the Arctic Charge energy strips line.</p>
+    <ul class="notes">
+      <li>Static ad creative built around the brand's 12 Conversations Framework — benefit-led, hack, science, credibility, and educational angles</li>
+      <li>Designed within a strict brand ruleset: 5-minute onset claim, no competitor naming, AU-specific copy, "Gentle on Stomach" positioning</li>
+    </ul>
+    <a class="view-link" href="https://drive.google.com/drive/folders/10fiYRYOGhfX7JW-sgjj8zmCBLsrocIUt?usp=sharing" target="_blank" rel="noopener">
+      View creatives <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <section class="resume reveal" id="resume">
+    <div class="resume-heading">FULL RESUME</div>
+    <h2 class="resume-title">Experience &amp; Background</h2>
+
+    <p class="summary">
+      Performance media buyer and ecommerce operator with <strong>5+ years</strong> running Meta and Google Ads for DTC brands, <strong>$50K+ in monthly spend managed</strong>, and hands-on experience across creative production, email marketing, and storefront management (Shopify). Comfortable owning a channel end-to-end — building the campaign, writing the copy, cutting the creative, and reporting the results without being chased for it.
+    </p>
+
+    <h3 class="block-title">Core Skills</h3>
+    <div class="skill-chips">
+      <div class="skill-chip"><span class="k">PAID MEDIA</span><span class="v">Meta &amp; Google Ads — build, brief, launch, weekly optimization on CTR, CPA, ROAS</span></div>
+      <div class="skill-chip"><span class="k">CREATIVE</span><span class="v">Static &amp; short-form video/reels, copy — built for fast iterative testing</span></div>
+      <div class="skill-chip"><span class="k">EMAIL</span><span class="v">Promotions, launches, abandoned cart flows, newsletters</span></div>
+      <div class="skill-chip"><span class="k">ECOMMERCE OPS</span><span class="v">Shopify storefronts — listings, inventory, promotions, order coordination</span></div>
+      <div class="skill-chip"><span class="k">REPORTING</span><span class="v">Weekly summaries via Google Analytics, Meta Ads Manager, Triple Whale</span></div>
+      <div class="skill-chip"><span class="k">COMPLIANCE</span><span class="v">Restricted-category policy navigation (Meta Health &amp; Wellness)</span></div>
+    </div>
+
+    <h3 class="block-title">Experience</h3>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-role">Senior Media Buyer — Google &amp; Meta Ads</span>
+        <span class="job-dates">Dec 2023 – Present</span>
+      </div>
+      <div class="job-company">Agile Cloud Limited</div>
+      <ul class="job-notes">
+        <li>Own paid media end-to-end for tech clients — planning, creative direction, launch, and troubleshooting — managing <strong>$50K+ in monthly ad spend</strong> against CPL, CPA, and ROAS targets</li>
+        <li>Run full-funnel campaigns (awareness through conversion) tailored to enterprise and SMB audiences, and present strategy and results directly to client stakeholders across marketing, sales, and product</li>
+        <li>Coordinate with platform reps and vendors to resolve technical blockers and keep campaigns delivering on schedule</li>
+        <li>Build weekly performance reports in Google Analytics, Triple Whale, and Dynamics CRM Insights that turn into clear next actions, not just numbers</li>
+        <li>Navigate platform policy and compliance requirements to protect account health and minimize delivery risk</li>
+        <li>Drove a <strong>40% lift in qualified demo requests</strong> and a <strong>32% improvement in lead-to-MQL conversion</strong> through optimized LinkedIn and Google Search funnels</li>
+        <li>Held <strong>$20–$40 CPL</strong> across Meta and Google while growing inbound MQL volume <strong>28% quarter-over-quarter</strong></li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-role">Google &amp; Meta Ads Specialist</span>
+        <span class="job-dates">Jan 2022 – Nov 2023</span>
+      </div>
+      <div class="job-company">Tushé</div>
+      <ul class="job-notes">
+        <li>Ran full-funnel Meta and Google campaigns for a DTC eco-friendly hygiene brand on a <strong>$30K monthly budget</strong>, balancing profitable growth with scale</li>
+        <li>Led creative strategy with designers and copywriters — testing hooks, formats, and messaging — lifting CTR by up to <strong>25%</strong></li>
+        <li>Improved ROAS by <strong>35%</strong> and cut CPA by <strong>28%</strong> through structured creative testing, audience expansion, and funnel optimization</li>
+        <li>Optimized landing pages and conversion paths, improving conversion rates by <strong>20%</strong> across key product pages</li>
+        <li>Delivered weekly performance reports via Meta Ads Manager, Google Ads, and Google Analytics, and kept account health strong through consistent policy compliance</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-role">Media Buyer — Google &amp; Meta Ads</span>
+        <span class="job-dates">Oct 2021 – Nov 2022</span>
+      </div>
+      <div class="job-company">Spotcross</div>
+      <ul class="job-notes">
+        <li>Managed Meta and Google campaigns across multiple DTC and ecommerce brands and verticals on a combined <strong>$15K+ monthly spend</strong></li>
+        <li>Built full-funnel campaigns — prospecting, retargeting, and retention — improving ROAS by up to <strong>40%</strong> and cutting CPA by <strong>25%</strong></li>
+        <li>Tested UGC-style creative, ad formats, hooks, and promotional messaging with the creative team, lifting CTR by up to <strong>30%</strong></li>
+        <li>Optimized product feeds, shopping campaigns, and landing pages, improving conversion rates by <strong>20%+</strong></li>
+        <li>Delivered weekly performance reports and insights to drive data-backed decisions across accounts</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-role">Social Media Specialist</span>
+        <span class="job-dates">Aug 2020 – Oct 2021</span>
+      </div>
+      <div class="job-company">88 Marketing</div>
+      <ul class="job-notes">
+        <li>Managed and optimized Meta campaigns for engagement, lead generation, and conversions, paired with active community management to build trust and improve conversion rates</li>
+        <li>Planned and executed full-funnel campaigns using audience research and segmentation, lifting CTR by up to <strong>25%</strong> and reducing CPL/CPA</li>
+        <li>Supported product and service launches through Meta campaigns that grew reach, demand, and conversion volume while maintaining compliance</li>
+      </ul>
+    </div>
+
+    <h3 class="block-title">Key Achievements</h3>
+    <ul class="job-notes" style="max-width: 62ch;">
+      <li>Managed and scaled high-performance campaigns within Meta's Health &amp; Wellness policy restrictions without losing delivery</li>
+      <li>Cut CAC by <strong>25%</strong> and improved MER across multiple accounts through funnel restructuring and targeted optimization</li>
+      <li>Drove a <strong>30% lift in revenue</strong> through rigorous creative testing frameworks and audience segmentation</li>
+      <li>Built evergreen retargeting systems using UGC, product demos, and high-converting creative</li>
+    </ul>
+
+    <h3 class="block-title">Business &amp; Vertical Experience</h3>
+    <ul class="job-notes" style="max-width: 62ch;">
+      <li>Ecommerce: electronics, consumer tech, men's fashion, and health &amp; wellness brands</li>
+      <li>Lead Generation: education, real estate, financial services, and professional services</li>
+      <li>Info Products: online courses, digital memberships, training programs, and webinars</li>
+      <li>Local Businesses: restaurants, clinics, fitness studios, and service-based SMEs</li>
+    </ul>
+
+    <h3 class="block-title">Education &amp; Certifications</h3>
+    <div class="edu-item"><strong>BSc, Business Computing</strong> — Jomo Kenyatta University of Agriculture and Technology, Nairobi (2022)</div>
+    <div class="certs">
+      Google AI-Powered Performance Ads &nbsp;•&nbsp; Google AI-Powered Shopping Ads &nbsp;•&nbsp; Google Ads Display &nbsp;•&nbsp; Google Analytics Individual Qualification &nbsp;•&nbsp; Google Campaign Manager 360 &nbsp;•&nbsp; Google Ads Measurement &nbsp;•&nbsp; Google Ads Creative &nbsp;•&nbsp; Google Ads Video
+    </div>
+  </section>
+
+  <footer>
+    <span>David Wambua — Nairobi, Kenya</span>
+    <a href="mailto:davidwambu8@gmail.com">davidwambu8@gmail.com</a>
+  </footer>
+
+</div>
+
+<script>
+  // sticky mini nav appears after scrolling past hero
+  const pill = document.getElementById('minavPill');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 420) pill.classList.add('show');
+    else pill.classList.remove('show');
+  }, { passive: true });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
